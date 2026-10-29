@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="app.css">
+
+<div class="screen" id="screen">
+  <header class="bar">
+    <img class="logo" src="icons/card.png">
+    <div class="title">NPC Cards</div>
+    <div class="tabs" id="tabs"></div>
+    <button class="btn ghost small" id="make"><img class="ic" src="icons/plus.png"><span id="make-text">Make your own</span></button>
+    <button class="btn ghost square" id="close"><img class="ic" src="icons/close.png"></button>
+  </header>
+  <div class="tabs under" id="tabs-under"></div>
+
+  <div class="band" id="band"></div>
+
+  <div class="pane" id="pane-browse">
+    <div class="tools">
+      <div class="search">
+        <img class="ic dim" src="icons/search.png">
+        <input class="q" id="q" type="text">
+      </div>
+      <div class="chips" id="roles"></div>
+      <div class="chips" id="sorts"></div>
+    </div>
+    <div class="scroll" id="browse-list"></div>
+  </div>
+
+  <div class="pane" id="pane-installed">
+    <div class="scroll" id="installed-list"></div>
+  </div>
+
+  <div class="pane" id="pane-import">
+    <div class="tools">
+      <div class="hint grow" id="import-hint"></div>
+      <button class="btn ghost small" id="import-refresh"><img class="ic" src="icons/refresh.png"><span id="import-refresh-text">Refresh</span></button>
+      <button class="btn small" id="import-open"><img class="ic" src="icons/folder.png"><span id="import-open-text">Open folder</span></button>
+    </div>
+    <div class="scroll" id="import-list"></div>
+  </div>
+
+  <div class="pane" id="pane-account">
+    <div class="scroll" id="account-list"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="app.js"></script>
