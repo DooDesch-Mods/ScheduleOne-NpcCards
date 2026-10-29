@@ -53,3 +53,9 @@ The mod talks to `personify.doomods.com` only:
 
 English and German. Your own translation goes to `UserData/DooDesch/Localization/NpcCards/<code>.json`; the
 setting "Language" in the "DooDesch" preferences category picks the language.
+
+## License
+
+Provided as-is under the [MIT License](LICENSE.md).
+
+This mod is written with help from generative AI tools (Anthropic Claude, OpenAI Codex).
