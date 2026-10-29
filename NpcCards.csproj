@@ -59,16 +59,15 @@
   </PropertyGroup>
 
   <!-- Personnel (required): the card API. Locally the build of the Personnel checkout named by PersonnelSource
-       (default: the feat/cards-2.4 worktree, then feat/cards), else the copy under the build libs (CI). -->
+       (default: the sibling Personnel checkout), else the copy under the build libs (CI). -->
   <PropertyGroup>
-    <PersonnelSource Condition="'$(PersonnelSource)' == '' And Exists('$(MSBuildThisFileDirectory)../_wt-Personnel-cards24/Personnel.csproj')">$(MSBuildThisFileDirectory)../_wt-Personnel-cards24</PersonnelSource>
-    <PersonnelSource Condition="'$(PersonnelSource)' == ''">$(MSBuildThisFileDirectory)../_wt-Personnel-cards</PersonnelSource>
+    <PersonnelSource Condition="'$(PersonnelSource)' == ''">$(MSBuildThisFileDirectory)../Personnel</PersonnelSource>
     <PersonnelDll Condition="'$(PersonnelDll)' == '' And Exists('$(PersonnelSource)/bin/Debug/net6.0/Personnel.dll')">$(PersonnelSource)/bin/Debug/net6.0/Personnel.dll</PersonnelDll>
     <PersonnelDll Condition="'$(PersonnelDll)' == '' And Exists('$(PersonnelSource)/bin/Release/net6.0/Personnel.dll')">$(PersonnelSource)/bin/Release/net6.0/Personnel.dll</PersonnelDll>
     <PersonnelDll Condition="'$(PersonnelDll)' == ''">$(WorkspaceLibPath)/$(Backend)/personnel/Personnel.dll</PersonnelDll>
   </PropertyGroup>
   <Target Name="ErrorWithoutPersonnel" BeforeTargets="CoreCompile" Condition="!Exists('$(PersonnelDll)')">
-    <Error Text="Personnel.dll was not found at $(PersonnelDll). Build Personnel 2.4 (feat/cards-2.4) first or pass -p:PersonnelDll=..." />
+    <Error Text="Personnel.dll was not found at $(PersonnelDll). Build Personnel 2.4 first or pass -p:PersonnelDll=..." />
   </Target>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
