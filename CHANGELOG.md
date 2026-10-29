@@ -3,6 +3,13 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-10-30
+
+### Changed
+- New icon in the phone, the Side Hustle hub and on Thunderstore: an NPC card next to the NPC
+  it brings into town.
+- Needs Personnel 2.4.1, where NPCs from cards wear their shirts and trousers again.
+
 ## [1.0.0] - 2026-10-29
 
 ### Added
