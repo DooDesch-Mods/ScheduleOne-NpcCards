@@ -1,0 +1,161 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- CI checks the build-libs Workspace out INSIDE the repo folder; keep its sources out of the default compile glob.
+       Every Workspace props import comes below this ItemGroup, or its linked sources get stripped again in CI. -->
+  <ItemGroup>
+    <Compile Remove="Workspace/**/*.cs" />
+    <Compile Remove="tests/**" />
+  </ItemGroup>
+
+  <!-- DooDesch.ModVersion.Current from this project's own version property. -->
+  <Import Project="$(MSBuildThisFileDirectory)../Workspace/build/ModVersion.props" Condition="Exists('$(MSBuildThisFileDirectory)../Workspace/build/ModVersion.props')" />
+  <Import Project="$(MSBuildThisFileDirectory)Workspace/build/ModVersion.props" Condition="Exists('$(MSBuildThisFileDirectory)Workspace/build/ModVersion.props')" />
+
+  <!-- Release hardening: strips debug info and the build path from the public DLL. -->
+  <Import Project="$(MSBuildThisFileDirectory)../Workspace/build/Hardening.props" Condition="Exists('$(MSBuildThisFileDirectory)../Workspace/build/Hardening.props')" />
+  <Import Project="$(MSBuildThisFileDirectory)Workspace/build/Hardening.props" Condition="Exists('$(MSBuildThisFileDirectory)Workspace/build/Hardening.props')" />
+
+  <!-- Where a build is allowed to install: the test copy by default. See Workspace/build/Deploy.props. -->
+  <Import Project="$(MSBuildThisFileDirectory)../Workspace/build/Deploy.props" Condition="Exists('$(MSBuildThisFileDirectory)../Workspace/build/Deploy.props')" />
+  <Import Project="$(MSBuildThisFileDirectory)Workspace/build/Deploy.props" Condition="Exists('$(MSBuildThisFileDirectory)Workspace/build/Deploy.props')" />
+
+  <!--
+    NPC Cards - MelonLoader IL2CPP mod for Schedule I. Brings NPC Vault cards into the game: a Sideload phone app and,
+    when Side Hustle is installed, the same page as a main-menu gamemode. All card work (codec, install, vault client,
+    inbox, upload) lives in Personnel.Cards; this mod is the interface over it.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>NpcCards</RootNamespace>
+    <AssemblyName>NpcCards</AssemblyName>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <!-- NEVER bumped. The release version comes from the tag (CI builds with -p:Version=X.Y.Z).
+         Rules: Workspace/docs/RELEASE-PROCESS.md, section "Versioning". -->
+    <Version Condition="'$(Version)' == ''">0.0.0-dev</Version>
+    <NoWarn>$(NoWarn);MSB3277;MSB3245;CS0436</NoWarn>
+
+    <Company>DooDesch</Company>
+    <Authors>DooDesch</Authors>
+    <Product>NPC Cards</Product>
+    <AssemblyTitle>NPC Cards</AssemblyTitle>
+    <Description>Browse and install NPC Vault cards in Schedule I.</Description>
+    <Copyright>Copyright © DooDesch</Copyright>
+    <Deterministic>true</Deterministic>
+
+    <WorkspaceLibPath Condition="'$(WorkspaceLibPath)' == ''">$(MSBuildThisFileDirectory)../Workspace/lib</WorkspaceLibPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Backend>il2cpp</Backend>
+    <DefineConstants>$(DefineConstants);IL2CPP</DefineConstants>
+    <GameManagedPath>$(WorkspaceLibPath)/$(Backend)/game</GameManagedPath>
+    <MelonLoaderPath>$(WorkspaceLibPath)/$(Backend)/melonloader</MelonLoaderPath>
+    <SideHustlePath>$(WorkspaceLibPath)/$(Backend)/sidehustle/SideHustle.dll</SideHustlePath>
+  </PropertyGroup>
+
+  <!-- Personnel (required): the card API. Locally the build of the Personnel checkout named by PersonnelSource
+       (default: the feat/cards-2.4 worktree, then feat/cards), else the copy under the build libs (CI). -->
+  <PropertyGroup>
+    <PersonnelSource Condition="'$(PersonnelSource)' == '' And Exists('$(MSBuildThisFileDirectory)../_wt-Personnel-cards24/Personnel.csproj')">$(MSBuildThisFileDirectory)../_wt-Personnel-cards24</PersonnelSource>
+    <PersonnelSource Condition="'$(PersonnelSource)' == ''">$(MSBuildThisFileDirectory)../_wt-Personnel-cards</PersonnelSource>
+    <PersonnelDll Condition="'$(PersonnelDll)' == '' And Exists('$(PersonnelSource)/bin/Debug/net6.0/Personnel.dll')">$(PersonnelSource)/bin/Debug/net6.0/Personnel.dll</PersonnelDll>
+    <PersonnelDll Condition="'$(PersonnelDll)' == '' And Exists('$(PersonnelSource)/bin/Release/net6.0/Personnel.dll')">$(PersonnelSource)/bin/Release/net6.0/Personnel.dll</PersonnelDll>
+    <PersonnelDll Condition="'$(PersonnelDll)' == ''">$(WorkspaceLibPath)/$(Backend)/personnel/Personnel.dll</PersonnelDll>
+  </PropertyGroup>
+  <Target Name="ErrorWithoutPersonnel" BeforeTargets="CoreCompile" Condition="!Exists('$(PersonnelDll)')">
+    <Error Text="Personnel.dll was not found at $(PersonnelDll). Build Personnel 2.4 (feat/cards-2.4) first or pass -p:PersonnelDll=..." />
+  </Target>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- The page (phone app and menu surface share it). The LogicalName prefix is the bundle prefix. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets/app/*" Exclude="Assets/app/preview.html;Assets/app/mock.js">
+      <LogicalName>NpcCards.Assets.app.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets/app/icons/*.png">
+      <LogicalName>NpcCards.Assets.app.icons.%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+    <!-- The Side Hustle hub finds this by name, also while its boot gate holds the mod back. -->
+    <EmbeddedResource Include="Assets/hub-icon.png">
+      <LogicalName>NpcCards.hub-icon.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- The Sideload.Api shim as source: the sibling Sideload checkout, else the copy under the build libs. The shim
+       finds the host by reflection; every call is a no-op without it. -->
+  <PropertyGroup>
+    <SideloadShimPath Condition="Exists('$(MSBuildThisFileDirectory)../Sideload/Sideload.Api/Sideload.cs')">$(MSBuildThisFileDirectory)../Sideload/Sideload.Api/Sideload.cs</SideloadShimPath>
+    <SideloadShimPath Condition="'$(SideloadShimPath)' == '' And Exists('$(WorkspaceLibPath)/sideload-api/Sideload.cs')">$(WorkspaceLibPath)/sideload-api/Sideload.cs</SideloadShimPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Condition="'$(SideloadShimPath)' != ''" Include="$(SideloadShimPath)" Link="Sideload.Api.cs" />
+  </ItemGroup>
+  <Target Name="ErrorWithoutSideloadShim" BeforeTargets="CoreCompile" Condition="'$(SideloadShimPath)' == ''">
+    <Error Text="Sideload.Api/Sideload.cs was not found next to this repo or under $(WorkspaceLibPath)/sideload-api/. The app cannot compile without it." />
+  </Target>
+
+  <Import Project="$(MSBuildThisFileDirectory)../Workspace/build/L10n.props" Condition="Exists('$(MSBuildThisFileDirectory)../Workspace/build/L10n.props')" />
+  <Import Project="$(MSBuildThisFileDirectory)Workspace/build/L10n.props" Condition="Exists('$(MSBuildThisFileDirectory)Workspace/build/L10n.props')" />
+
+  <ItemGroup>
+    <Reference Include="MelonLoader">
+      <HintPath>$(MelonLoaderPath)/MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(MelonLoaderPath)/Il2CppInterop.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(MelonLoaderPath)/Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Personnel">
+      <HintPath>$(PersonnelDll)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Optional at runtime: only Menu/MenuMode.cs touches it, behind a check that Side Hustle is loaded. -->
+    <Reference Include="SideHustle">
+      <HintPath>$(SideHustlePath)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(GameManagedPath)/Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameManagedPath)/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameManagedPath)/UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameManagedPath)/UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameManagedPath)/UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameManagedPath)/UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="Build" Condition="'$(OS)' == 'Windows_NT'">
+    <Exec Condition="Exists('$(ModsDirectory)')" Command="cmd /c if exist &quot;$(ModsDirectory)&quot; copy /Y &quot;$(TargetPath)&quot; &quot;$(ModsDirectory)&quot;" ContinueOnError="true" />
+  </Target>
+
+</Project>
