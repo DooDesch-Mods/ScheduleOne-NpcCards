@@ -1,12 +1,12 @@
 {
   "name": "NPC_Cards",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://github.com/DooDesch-Mods/ScheduleOne-NpcCards",
-  "description": "Browse and install NPCs from NPC Vault in your phone. Every card is a full NPC with look, schedule and role.",
+  "description": "Add new NPCs in one click. Browse player-made NPCs from NPC Vault on your phone and install them. Every card is a full NPC with look, schedule and role.",
   "dependencies": [
     "LavaGang-MelonLoader-0.7.3",
     "DooDesch-Sideload-1.36.0",
-    "DooDesch-Personnel-2.4.0"
+    "DooDesch-Personnel-2.4.1"
   ],
   "contributors": [ "DooDesch" ]
 }

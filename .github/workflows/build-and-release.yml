@@ -386,13 +386,13 @@ jobs:
           repo: thunderstore.io
           namespace: DooDesch
           name: NPC_Cards
-          description: Browse and install NPCs from NPC Vault in your phone. Every card is a full NPC with look, schedule and role.
+          description: Add new NPCs in one click. Browse player-made NPCs from NPC Vault on your phone and install them. Every card is a full NPC with look, schedule and role.
           version: ${{ needs.build.outputs.version }}
           path: thunderstore-package
           deps: |
             LavaGang-MelonLoader-0.7.3
             DooDesch-Sideload-1.36.0
-            DooDesch-Personnel-2.4.0
+            DooDesch-Personnel-2.4.1
           categories: |
             Mods
 

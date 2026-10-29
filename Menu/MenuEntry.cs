@@ -34,7 +34,7 @@ namespace NpcCards.Menu
             {
                 Id = GamemodeId,
                 DisplayName = "NPC Cards",
-                Description = Host.Strings.T("Browse NPC Vault and install NPC cards."),
+                Description = Host.Strings.T("Add new NPCs in one click."),
                 Author = "DooDesch",
                 Support = GamemodeSupport.Singleplayer,
                 Surface = GamemodeSurface.MenuSpace,

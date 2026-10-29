@@ -1,16 +1,17 @@
-# NPC Cards - NPC Vault in your phone for Schedule I
+# NPC Cards - Add New NPCs in One Click for Schedule I
 
 > 🛟 **Need help or found a bug?** Get support at [support.doodesch.de/npccards](https://support.doodesch.de/npccards).
 
-> Browse and install NPCs from [NPC Vault](https://personify.doomods.com) in your phone. Every card is a full NPC with
+> Add new NPCs in one click. Browse the NPCs other players built on [NPC Vault](https://personify.doomods.com) and
+> install them from your phone. Every card is a full NPC with
 > look, schedule and role. Import downloaded card PNGs, send cards from the website to your game. Needs
 > [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel).
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.1-blue)
 ![Game](https://img.shields.io/badge/game-Schedule%20I-purple)
 ![MelonLoader](https://img.shields.io/badge/MelonLoader-0.7.3+-green)
 ![Sideload](https://img.shields.io/badge/Sideload-1.36.0+-yellow)
-![Personnel](https://img.shields.io/badge/Personnel-2.4.0+-yellow)
+![Personnel](https://img.shields.io/badge/Personnel-2.4.1+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
 
 [![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_pB5hjd8DeBNUrvVHtae35FFi/badge.svg)](https://mlvscan.com/attestations/att_pB5hjd8DeBNUrvVHtae35FFi)
@@ -56,7 +57,7 @@ The mod talks to `personify.doomods.com` only:
 
 - MelonLoader 0.7.3+
 - [Sideload](https://github.com/DooDesch-Mods/ScheduleOne-Sideload) 1.36.0+
-- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.4.0+
+- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.4.1+
 - [Side Hustle](https://github.com/DooDesch-Mods/ScheduleOne-SideHustle) (optional, for the menu gamemode)
 
 ## Languages
