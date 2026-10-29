@@ -13,6 +13,8 @@
 ![Personnel](https://img.shields.io/badge/Personnel-2.4.0+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
 
+![NPC Cards](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/header.jpg)
+
 ## What it does
 
 | Tab | |
@@ -41,6 +43,14 @@ The mod talks to `personify.doomods.com` only:
 - Connecting links this game to your account with a code you confirm on the website. Personnel keeps the token in
   `UserData/Personnel/vault.json`. Disconnect removes it.
 - Uploading sends the card PNG you pick.
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Browse NPC Vault](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/browse.jpg) | ![Card detail](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/card-detail.jpg) |
+| ![Installed cards](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/installed.jpg) | ![Portrait phone](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/portrait.jpg) |
+| ![Main-menu gamemode](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/main-menu.jpg) | |
 
 ## Requirements
 
