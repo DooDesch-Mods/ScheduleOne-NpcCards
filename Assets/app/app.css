@@ -82,6 +82,8 @@ body {
   font-size: 13px;
 }
 .band .grow { color: var(--amber); }
+.band.tip { background: var(--s2); border-bottom: 1px solid var(--line); color: var(--text); }
+.band.tip .grow { color: var(--text); }
 
 /* ---- panes ----------------------------------------------------------------------------------------------- */
 

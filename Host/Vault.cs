@@ -194,7 +194,7 @@ namespace NpcCards.Host
         internal static JObject OpenUrl(string url)
         {
             string vault = BaseUrl.TrimEnd('/') + "/";
-            bool allowed = !string.IsNullOrEmpty(url) && (url.StartsWith(vault, StringComparison.OrdinalIgnoreCase) || url == Calls.PersonifyUrl);
+            bool allowed = !string.IsNullOrEmpty(url) && (url.StartsWith(vault, StringComparison.OrdinalIgnoreCase) || url == Calls.PersonifyUrl || url == SiestaHint.Url);
             if (!allowed) { Core.Log.Warning($"[vault] opening '{url}' refused: not a vault page."); return Calls.Fail("Something went wrong. See the log."); }
             Application.OpenURL(url);
             Core.Log.Msg($"[vault] opened {url} in the browser.");
