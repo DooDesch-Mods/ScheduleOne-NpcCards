@@ -35,6 +35,8 @@ namespace NpcCards.Host
             ["cards.uploadFiles"] = (a, _) => Library.UploadFiles(),
             ["open.url"] = (a, _) => Vault.OpenUrl((string)a["url"]),
             ["copy"] = (a, _) => Vault.Copy((string)a["text"]),
+            ["siesta.hint"] = (a, _) => SiestaHint.State(),
+            ["siesta.close"] = (a, _) => SiestaHint.Close(),
             ["menu.close"] = (a, where) => Menu.MenuSurface.RequestClose(where),
         };
 

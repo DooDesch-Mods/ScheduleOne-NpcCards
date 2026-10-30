@@ -160,6 +160,33 @@ function drawBand() {
   band.appendChild(el('div', 'grow', parts.join(' ')));
 }
 
+// The Siesta tip counts the NPCs of the next game start, so it appears with the install that reaches the threshold.
+let siestaTip = null;
+
+function drawTip() {
+  const tip = $('tip');
+  clear(tip);
+  const npcs = siestaTip && siestaTip.offer ? siestaTip.npcs + app.next.arriving.length - app.next.leaving.length : 0;
+  const on = siestaTip && siestaTip.offer && npcs >= siestaTip.threshold;
+  tip.className = on ? 'band tip' : 'band tip hidden';
+  if (!on) return;
+  tip.appendChild(el('div', 'grow', t('{0} NPCs can slow your game down. Siesta helps.', npcs)));
+  const get = el('button', 'btn small');
+  get.appendChild(icon('link'));
+  get.appendChild(el('span', null, t('Get Siesta')));
+  get.addEventListener('click', () => openUrl(siestaTip.url));
+  tip.appendChild(get);
+  const close = el('button', 'btn ghost small square');
+  close.appendChild(icon('close'));
+  close.addEventListener('click', () => {
+    const r = call('siesta.close');
+    if (!r.ok) { toast(r.msg, 'bad'); return; }
+    siestaTip.offer = false;
+    drawTip();
+  });
+  tip.appendChild(close);
+}
+
 function show(tab) {
   app.tab = tab;
   app.confirmRemove = null;
@@ -182,6 +209,7 @@ function loadInstalled() {
   for (const c of app.installed) app.installedCodes[c.code] = true;
   if (r.next) app.next = r.next;
   drawBand();
+  drawTip();
   drawTabs();
   if (app.tab === 'installed') drawInstalled();
   if (app.tab === 'browse') drawBrowse();
@@ -733,6 +761,9 @@ function start() {
   q.addEventListener('change', e => { typed = String(valueOf(e) || ''); commit(); });
   q.addEventListener('keydown', e => { if (e.key === 'Enter') commit(); });
   drawChips();
+  const hint = call('siesta.hint');
+  if (hint.ok) siestaTip = hint;
+  else console.error('[npccards] siesta.hint failed: ' + hint.msg);
   loadInstalled();
   show('browse');
 }
