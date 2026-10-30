@@ -11,7 +11,7 @@
 ![Game](https://img.shields.io/badge/game-Schedule%20I-purple)
 ![MelonLoader](https://img.shields.io/badge/MelonLoader-0.7.3+-green)
 ![Sideload](https://img.shields.io/badge/Sideload-1.36.0+-yellow)
-![Personnel](https://img.shields.io/badge/Personnel-2.4.1+-yellow)
+![Personnel](https://img.shields.io/badge/Personnel-2.4.2+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
 
 [![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_cv2vGNzfEIZiNMpRBHo4g41K/badge.svg)](https://mlvscan.com/attestations/att_cv2vGNzfEIZiNMpRBHo4g41K)

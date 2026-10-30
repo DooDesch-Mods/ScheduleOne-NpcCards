@@ -3,6 +3,17 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-10-31
+
+### Added
+
+- The Browse tab recommends Siesta from 40 custom NPCs if it is not installed. Closing the tip lasts until you quit
+  the game.
+
+### Changed
+
+- Needs Personnel 2.4.2, where big heads, tiny heads and missing heads show on NPCs from cards.
+
 ## [1.0.1] - 2026-10-30
 
 ### Changed
