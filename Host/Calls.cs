@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Sideload.Api;
@@ -40,6 +41,9 @@ namespace NpcCards.Host
             ["menu.close"] = (a, where) => Menu.MenuSurface.RequestClose(where),
         };
 
+        /// <summary>The calls that never reach Personnel, so they still answer without it.</summary>
+        private static readonly HashSet<string> WithoutPersonnel = new HashSet<string>(StringComparer.Ordinal) { "init", "menu.close" };
+
         internal static void RegisterPhone()
         {
             try
@@ -65,6 +69,11 @@ namespace NpcCards.Host
         {
             try
             {
+                if (!PersonnelCheck.Loaded && !WithoutPersonnel.Contains(name))
+                {
+                    Core.Log.Warning($"[{where}] {name} refused: Personnel is not loaded.");
+                    return Fail(PersonnelCheck.Notice).ToString(Formatting.None);
+                }
                 JObject a = string.IsNullOrWhiteSpace(arg) ? new JObject() : JObject.Parse(arg);
                 return (handler(a, where) ?? Fail("Something went wrong. See the log.")).ToString(Formatting.None);
             }
@@ -77,7 +86,18 @@ namespace NpcCards.Host
 
         internal static JObject Fail(string en) => new JObject { ["ok"] = false, ["msg"] = Strings.T(en) };
 
-        private static JObject Init(string where) => new JObject
+        private static JObject Init(string where) => PersonnelCheck.Loaded ? FullInit(where) : new JObject
+        {
+            ["ok"] = true,
+            ["where"] = where,
+            ["version"] = DooDesch.ModVersion.Current,
+            ["strings"] = Strings.ForPage(),
+            ["personnelMissing"] = true,
+        };
+
+        // Not inlined, because this names types that resolve into Personnel (see Core).
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static JObject FullInit(string where) => new JObject
         {
             ["ok"] = true,
             ["where"] = where,

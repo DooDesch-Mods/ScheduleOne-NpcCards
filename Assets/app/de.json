@@ -82,5 +82,6 @@
   "1 NPC leaves after the next game start.": "1 NPC geht nach dem nächsten Spielstart.",
   "{0} NPCs leave after the next game start.": "{0} NPCs gehen nach dem nächsten Spielstart.",
   "1 NPC changes after the next game start.": "1 NPC ändert sich nach dem nächsten Spielstart.",
-  "{0} NPCs change after the next game start.": "{0} NPCs ändern sich nach dem nächsten Spielstart."
+  "{0} NPCs change after the next game start.": "{0} NPCs ändern sich nach dem nächsten Spielstart.",
+  "Personnel is not loaded.": "Personnel ist nicht geladen."
 }

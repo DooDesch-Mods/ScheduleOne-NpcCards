@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using MelonLoader;
 
 [assembly: MelonInfo(typeof(NpcCards.Core), "NPC Cards", DooDesch.ModVersion.Current, "DooDesch", "https://github.com/DooDesch-Mods/ScheduleOne-NpcCards")]
@@ -20,11 +21,21 @@ namespace NpcCards
             Instance = this;
             Log = LoggerInstance;
             Host.Strings.Register();
-            Host.Library.Start();
+            bool personnel = Host.PersonnelCheck.Detect();
+            if (personnel) StartCards();
             Host.Calls.RegisterPhone();
             Menu.MenuEntry.TryRegister();
-            Log.Msg($"NPC Cards {Info.Version} ready (Personnel cards API, vault {Host.Vault.BaseUrl}).");
+            if (personnel) LogReady();
+            else Log.Msg($"NPC Cards {Info.Version} ready without Personnel: the app only shows the notice.");
         }
+
+        // Kept out of OnInitializeMelon: the JIT resolves Personnel's types when it compiles a method that names them,
+        // and a missing Personnel.dll must not take the phone app down with it.
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void StartCards() => Host.Library.Start();
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private void LogReady() => Log.Msg($"NPC Cards {Info.Version} ready (Personnel cards API, vault {Host.Vault.BaseUrl}).");
 
         public override void OnUpdate()
         {

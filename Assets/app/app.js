@@ -731,6 +731,15 @@ function closeMenu() {
 
 // ---- start -------------------------------------------------------------------------------------------------------
 
+// Personnel does all the card work, so without it the page has nothing else to offer.
+function drawPersonnelMissing() {
+  for (const [id] of TABS) $('pane-' + id).className = 'pane hidden';
+  $('make').className = 'hidden';
+  $('band').className = 'hidden';
+  $('missing-text').textContent = t('Personnel is not loaded.');
+  $('pane-missing').className = 'pane';
+}
+
 function start() {
   const r = call('init');
   if (r.ok) {
@@ -745,6 +754,7 @@ function start() {
   if (app.where === 'menu') document.body.classList.add('menu');
   $('close').className = app.where === 'menu' ? 'btn ghost square' : 'hidden';
   $('close').addEventListener('click', closeMenu);
+  if (r.ok && r.personnelMissing) { drawPersonnelMissing(); return; }
   $('make-text').textContent = t('Make your own');
   $('make').addEventListener('click', () => openUrl(app.personifyUrl));
   $('import-refresh-text').textContent = t('Refresh');
