@@ -14,7 +14,7 @@
 ![Personnel](https://img.shields.io/badge/Personnel-2.4.4+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
 
-[![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_HJkWNR9_IuLjOF43ebHTyKE3/badge.svg)](https://mlvscan.com/attestations/att_HJkWNR9_IuLjOF43ebHTyKE3)
+[![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_7lGssI8D_IAWygzEhkcXX8Am/badge.svg)](https://mlvscan.com/attestations/att_7lGssI8D_IAWygzEhkcXX8Am)
 
 ![NPC Cards](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/header.jpg)
 
