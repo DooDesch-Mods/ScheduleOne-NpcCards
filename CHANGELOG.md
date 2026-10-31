@@ -3,6 +3,19 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-10-31
+
+### Changed
+
+- New phone icon in the style of the game's own apps.
+- The requirements now list S1API, which Personnel needs.
+
+### Fixed
+
+- Cards converted from another mod show their original author instead of the account that uploaded them. In the
+  Installed tab this needs Personnel 2.4.3.
+- The app now says "Personnel is not loaded." when Personnel is missing. Before, its icon did not show up at all.
+
 ## [1.1.0] - 2026-10-31
 
 ### Added
