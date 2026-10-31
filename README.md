@@ -59,7 +59,8 @@ The mod talks to `personify.doomods.com` only:
 
 - MelonLoader 0.7.3+
 - [Sideload](https://github.com/DooDesch-Mods/ScheduleOne-Sideload) 1.36.0+
-- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.4.1+
+- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.4.2+
+- [S1API](https://thunderstore.io/c/schedule-i/p/ifBars/S1API_Forked/) (Personnel needs it to bring NPCs into the game)
 - [Side Hustle](https://github.com/DooDesch-Mods/ScheduleOne-SideHustle) (optional, for the menu gamemode)
 
 ## Languages
