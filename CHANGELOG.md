@@ -3,6 +3,12 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.2] - 2026-10-31
+
+### Changed
+
+- Needs Personnel 2.4.4, the first version MLVScan 2.1.7 does not disable.
+
 ## [1.1.1] - 2026-10-31
 
 ### Changed
