@@ -143,6 +143,14 @@ namespace NpcCards.Host
             return new JObject { ["ok"] = true, ["folder"] = dir, ["files"] = files };
         }
 
+        // A converted card goes by its original author. A remix keeps that credit but is the remixer's work.
+        private static string AuthorOf(JObject meta)
+        {
+            string author = ((string)meta?["credit"]?["author"])?.Trim();
+            bool remix = meta?["basedOn"] is JObject;
+            return !remix && !string.IsNullOrEmpty(author) ? author : (string)meta?["creator"];
+        }
+
         private static JObject Describe(FileInfo fi)
         {
             string key = fi.FullName + "|" + fi.LastWriteTimeUtc.Ticks + "|" + fi.Length;
@@ -158,7 +166,7 @@ namespace NpcCards.Host
                     o["card"] = true;
                     o["name"] = (string)npc?["name"] ?? Path.GetFileNameWithoutExtension(fi.Name);
                     o["role"] = CardLibrary.RoleOf(npc);
-                    o["creator"] = (string)card["meta"]?["creator"];
+                    o["creator"] = AuthorOf(card["meta"] as JObject);
                     o["picture"] = Pages.Picture("file-" + Fnv(key), png);
                 }
                 else

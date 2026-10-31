@@ -445,7 +445,7 @@ function drawDetail() {
   const head = el('div', 'sheet-head');
   const names = el('div', 'grow');
   names.appendChild(el('div', 'sheet-name', c.name));
-  names.appendChild(el('div', 'hint', t('by {0}', (c.creator && c.creator.name) || '?')));
+  names.appendChild(el('div', 'hint', t('by {0}', c.author || (c.creator && c.creator.name) || '?')));
   head.appendChild(names);
   head.appendChild(button('ghost small square', 'close', null, closeDetail));
   side.appendChild(head);
@@ -461,7 +461,11 @@ function drawDetail() {
   const line = info.npc ? greeting(info.npc.lines) : null;
   if (line) side.appendChild(el('div', 'line', '"' + line + '"'));
   if (info.credit && info.credit.author) {
-    side.appendChild(el('div', 'credit', t('Original by {0}', info.credit.author) + (info.credit.source ? ' (' + info.credit.source + ')' : '')));
+    if (info.credit.author !== c.author) {
+      side.appendChild(el('div', 'credit', t('Original by {0}', info.credit.author) + (info.credit.source ? ' (' + info.credit.source + ')' : '')));
+    } else if (info.credit.source) {
+      side.appendChild(el('div', 'credit', t('From {0}', info.credit.source)));
+    }
   }
   if (detail.error) side.appendChild(el('div', 'row-err', detail.error));
   side.appendChild(el('div', 'spacer'));
