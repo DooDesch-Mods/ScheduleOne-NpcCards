@@ -3,6 +3,16 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-11-02
+
+### Added
+
+- Browse can filter by Police, and police cards show their role.
+
+### Changed
+
+- Needs Personnel 2.5.0.
+
 ## [1.1.2] - 2026-10-31
 
 ### Changed
