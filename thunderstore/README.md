@@ -22,7 +22,7 @@
 
 | Tab | |
 |---|---|
-| **Browse** | Search NPC Vault, filter by Customer, Dealer, Supplier or Civilian, sort by new, hearts or downloads. Open a card for its region, greeting and credit, then install it. |
+| **Browse** | Search NPC Vault, filter by Customer, Dealer, Supplier, Police or Civilian, sort by new, hearts or downloads. Open a card for its region, greeting and credit, then install it. |
 | **Installed** | Every card Personnel has installed, also the ones from Personify or the import folder. Remove a card here. |
 | **Import** | Card PNGs in `UserData/Personnel/Import/`. Install one now, or let Personnel install them at the next start. |
 | **Account** | Connect the game to your NPC Vault account. Cards you send with "Send to game" on the website arrive here. Upload a card PNG from the import folder. |

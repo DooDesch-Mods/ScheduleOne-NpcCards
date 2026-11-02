@@ -88,7 +88,7 @@ host.on('vault.reply', p => {
 
 // ---- state -----------------------------------------------------------------------------------------------------
 
-const ROLES = [['', 'All'], ['customer', 'Customer'], ['dealer', 'Dealer'], ['supplier', 'Supplier'], ['townsfolk', 'Civilian']];
+const ROLES = [['', 'All'], ['customer', 'Customer'], ['dealer', 'Dealer'], ['supplier', 'Supplier'], ['police', 'Police'], ['townsfolk', 'Civilian']];
 const SORTS = [['new', 'New'], ['hearts', 'Hearts'], ['downloads', 'Downloads']];
 const roleName = r => t((ROLES.find(x => x[0] === r) || ROLES[4])[1]);
 
