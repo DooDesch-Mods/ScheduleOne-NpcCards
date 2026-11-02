@@ -11,7 +11,7 @@
 ![Game](https://img.shields.io/badge/game-Schedule%20I-purple)
 ![MelonLoader](https://img.shields.io/badge/MelonLoader-0.7.3+-green)
 ![Sideload](https://img.shields.io/badge/Sideload-1.36.0+-yellow)
-![Personnel](https://img.shields.io/badge/Personnel-2.4.4+-yellow)
+![Personnel](https://img.shields.io/badge/Personnel-2.5.0+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
 
 [![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_7lGssI8D_IAWygzEhkcXX8Am/badge.svg)](https://mlvscan.com/attestations/att_7lGssI8D_IAWygzEhkcXX8Am)
@@ -22,7 +22,7 @@
 
 | Tab | |
 |---|---|
-| **Browse** | Search NPC Vault, filter by Customer, Dealer, Supplier or Civilian, sort by new, hearts or downloads. Open a card for its region, greeting and credit, then install it. |
+| **Browse** | Search NPC Vault, filter by Customer, Dealer, Supplier, Police or Civilian, sort by new, hearts or downloads. Open a card for its region, greeting and credit, then install it. |
 | **Installed** | Every card Personnel has installed, also the ones from Personify or the import folder. Remove a card here. |
 | **Import** | Card PNGs in `UserData/Personnel/Import/`. Install one now, or let Personnel install them at the next start. |
 | **Account** | Connect the game to your NPC Vault account. Cards you send with "Send to game" on the website arrive here. Upload a card PNG from the import folder. |
@@ -59,7 +59,7 @@ The mod talks to `personify.doomods.com` only:
 
 - MelonLoader 0.7.3+
 - [Sideload](https://github.com/DooDesch-Mods/ScheduleOne-Sideload) 1.36.0+
-- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.4.4+
+- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.5.0+
 - [S1API](https://thunderstore.io/c/schedule-i/p/ifBars/S1API_Forked/) (Personnel needs it to bring NPCs into the game)
 - [Side Hustle](https://github.com/DooDesch-Mods/ScheduleOne-SideHustle) (optional, for the menu gamemode)
 
