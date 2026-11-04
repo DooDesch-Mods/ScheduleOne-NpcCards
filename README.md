@@ -2,10 +2,12 @@
 
 > 🛟 **Need help or found a bug?** Get support at [support.doodesch.de/npccards](https://support.doodesch.de/npccards).
 
+**Download:** [Nexus Mods](https://www.nexusmods.com/schedule1/mods/3015) · [Thunderstore](https://thunderstore.io/c/schedule-i/p/DooDesch/NPC_Cards/) · [GitHub Releases](https://github.com/DooDesch-Mods/ScheduleOne-NpcCards/releases)
+
 > Add new NPCs in one click. Browse the NPCs other players built on [NPC Vault](https://personify.doomods.com) and
 > install them from your phone. Every card is a full NPC with
 > look, schedule and role. Import downloaded card PNGs, send cards from the website to your game. Needs
-> [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel).
+> [Personnel](https://www.nexusmods.com/schedule1/mods/2275).
 
 ![Version](https://img.shields.io/badge/version-1.0.1-blue)
 ![Game](https://img.shields.io/badge/game-Schedule%20I-purple)
@@ -29,12 +31,12 @@
 
 A new NPC shows up after the next game start, not right away. The amber band says how many NPCs arrive or leave.
 
-"Make your own" opens [Personify](https://thunderstore.io/c/schedule-i/p/DooDesch/Personify/), the editor that makes cards.
+"Make your own" opens [Personify](https://www.nexusmods.com/schedule1/mods/2276), the editor that makes cards.
 
 ## Where it opens
 
 - **Phone:** the NPC Cards app, in landscape and portrait.
-- **Main menu:** with [Side Hustle](https://github.com/DooDesch-Mods/ScheduleOne-SideHustle) installed, NPC Cards is
+- **Main menu:** with [Side Hustle](https://www.nexusmods.com/schedule1/mods/2232) installed, NPC Cards is
   also a menu gamemode. Escape or right-click steps back.
 
 ## Online
@@ -55,13 +57,26 @@ The mod talks to `personify.doomods.com` only:
 | ![Installed cards](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/installed.jpg) | ![Portrait phone](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/portrait.jpg) |
 | ![Main-menu gamemode](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/main-menu.jpg) | |
 
+## Installation
+
+### Recommended: Nexus Mods
+
+1. Install **MelonLoader 0.7.3** for Schedule I ([melonwiki.xyz](https://melonwiki.xyz/)).
+2. Download NPC Cards from [Nexus Mods](https://www.nexusmods.com/schedule1/mods/3015) and install it with Vortex,
+   or put **`NpcCards.dll`** into your Schedule I `Mods/` folder.
+3. Get the mods under Requirements from their Nexus pages the same way.
+
+### Thunderstore mod manager
+
+Install from the [Thunderstore page](https://thunderstore.io/c/schedule-i/p/DooDesch/NPC_Cards/) with r2modman or Gale. The dependencies are pulled in automatically.
+
 ## Requirements
 
 - MelonLoader 0.7.3+
-- [Sideload](https://github.com/DooDesch-Mods/ScheduleOne-Sideload) 1.36.0+
-- [Personnel](https://github.com/DooDesch-Mods/ScheduleOne-Personnel) 2.5.0+
+- [Sideload](https://www.nexusmods.com/schedule1/mods/2360) 1.36.0+
+- [Personnel](https://www.nexusmods.com/schedule1/mods/2275) 2.5.0+
 - [S1API](https://thunderstore.io/c/schedule-i/p/ifBars/S1API_Forked/) (Personnel needs it to bring NPCs into the game)
-- [Side Hustle](https://github.com/DooDesch-Mods/ScheduleOne-SideHustle) (optional, for the menu gamemode)
+- [Side Hustle](https://www.nexusmods.com/schedule1/mods/2232) (optional, for the menu gamemode)
 
 ## Languages
 
