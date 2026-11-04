@@ -14,7 +14,7 @@ namespace NpcCards.Host
     /// </summary>
     internal static class SiestaHint
     {
-        internal const string Url = "https://thunderstore.io/c/schedule-i/p/DooDesch/Siesta/";
+        internal const string Url = "https://www.nexusmods.com/schedule1/mods/2210";
         private const string MelonName = "Siesta";
         private const string DllName = "Siesta.dll";
 

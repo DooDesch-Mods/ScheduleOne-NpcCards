@@ -15,7 +15,7 @@ namespace NpcCards.Host
     {
         internal const string AppId = "npccards";
         internal const string Bundle = "NpcCards.Assets.app";
-        internal const string PersonifyUrl = "https://thunderstore.io/c/schedule-i/p/DooDesch/Personify/";
+        internal const string PersonifyUrl = "https://www.nexusmods.com/schedule1/mods/2276";
 
         private static readonly Dictionary<string, Func<JObject, string, JObject>> Handlers = new Dictionary<string, Func<JObject, string, JObject>>(StringComparer.Ordinal)
         {
