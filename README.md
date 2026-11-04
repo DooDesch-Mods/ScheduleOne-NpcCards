@@ -4,6 +4,8 @@
 
 **Download:** [Nexus Mods](https://www.nexusmods.com/schedule1/mods/3015) · [Thunderstore](https://thunderstore.io/c/schedule-i/p/DooDesch/NPC_Cards/) · [GitHub Releases](https://github.com/DooDesch-Mods/ScheduleOne-NpcCards/releases)
 
+[![Discord](https://mods.doodesch.de/img/badge.svg)](https://mods.doodesch.de)
+
 > Add new NPCs in one click. Browse the NPCs other players built on [NPC Vault](https://personify.doomods.com) and
 > install them from your phone. Every card is a full NPC with
 > look, schedule and role. Import downloaded card PNGs, send cards from the website to your game. Needs
@@ -82,6 +84,12 @@ Install from the [Thunderstore page](https://thunderstore.io/c/schedule-i/p/DooD
 
 English and German. Your own translation goes to `UserData/DooDesch/Localization/NpcCards/<code>.json`; the
 setting "Language" in the "DooDesch" preferences category picks the language.
+
+## Community
+
+[![DooDesch Mods on Discord](https://mods.doodesch.de/img/card.svg)](https://mods.doodesch.de)
+
+Join the DooDesch Mods Discord: update pings, polls on what comes next, and playtests of new mods.
 
 ## License
 
