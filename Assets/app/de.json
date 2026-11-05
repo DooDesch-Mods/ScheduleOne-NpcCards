@@ -1,6 +1,10 @@
 {
   "Account": "Konto",
   "All": "Alle",
+  "All regions": "Alle Regionen",
+  "Cut {0}": "Anteil {0}",
+  "Limit {0}": "Limit {0}",
+  "{0}/wk": "{0}/Woche",
   "Already on NPC Vault as {0}.": "Schon auf NPC Vault als {0}.",
   "Arrived at {0}. Shows up after the next game start.": "Angekommen um {0}. Erscheint nach dem nächsten Spielstart.",
   "Arrives after the next game start.": "Kommt nach dem nächsten Spielstart.",

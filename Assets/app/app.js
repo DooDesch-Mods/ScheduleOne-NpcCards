@@ -90,6 +90,23 @@ host.on('vault.reply', p => {
 
 const ROLES = [['', 'All'], ['customer', 'Customer'], ['dealer', 'Dealer'], ['supplier', 'Supplier'], ['police', 'Police'], ['townsfolk', 'Civilian']];
 const SORTS = [['new', 'New'], ['hearts', 'Hearts'], ['downloads', 'Downloads']];
+// Region names are the game's own map names and stay English, like on the map.
+const REGIONS = [['', 'All regions'], ['northtown', 'Northtown'], ['westville', 'Westville'], ['downtown', 'Downtown'],
+  ['docks', 'Docks'], ['suburbia', 'Suburbia'], ['uptown', 'Uptown']];
+
+/** The vault's role value ("Cut 20%", "Limit $500-5k", "$400-800/wk") in the player's language. */
+function statText(s) {
+  if (!s) return '';
+  if (s.startsWith('Cut ')) return t('Cut {0}', s.slice(4));
+  if (s.startsWith('Limit ')) return t('Limit {0}', s.slice(6));
+  if (s.endsWith('/wk')) return t('{0}/wk', s.slice(0, -3));
+  return s;
+}
+
+/** Role, region and role value of a vault card: "Customer · Northtown · $400-800/wk". */
+function tileFacts(c) {
+  return [roleName(c.role), c.region, statText(c.stat)].filter(Boolean).join(' · ');
+}
 const roleName = r => t((ROLES.find(x => x[0] === r) || ROLES[5])[1]);
 
 const app = {
@@ -104,7 +121,7 @@ const app = {
   confirmRemove: null,
 };
 
-const browse = { q: '', role: '', sort: 'new', cards: [], next: null, loading: false, error: null, seq: 0 };
+const browse = { q: '', role: '', region: '', sort: 'new', cards: [], next: null, loading: false, error: null, seq: 0 };
 const thumbs = {};   // code -> s1:// url, or null after a failed load
 const pics = {};     // code -> the <img> elements waiting for that picture
 let detail = null;   // { card, info, busy }
@@ -282,6 +299,13 @@ function drawChips() {
     b.addEventListener('click', () => { if (browse.role === id) return; browse.role = id; drawChips(); search(); });
     roles.appendChild(b);
   }
+  const regions = $('regions');
+  clear(regions);
+  for (const [id, label] of REGIONS) {
+    const b = el('button', 'chip' + (browse.region === id ? ' on' : ''), id ? label : t(label));
+    b.addEventListener('click', () => { if (browse.region === id) return; browse.region = id; drawChips(); search(); });
+    regions.appendChild(b);
+  }
   const sorts = $('sorts');
   clear(sorts);
   for (const [id, label] of SORTS) {
@@ -295,6 +319,7 @@ function listPath(cursor) {
   let p = '/api/v1/cards?sort=' + browse.sort;
   if (browse.q) p += '&q=' + encodeURIComponent(browse.q);
   if (browse.role) p += '&role=' + browse.role;
+  if (browse.region) p += '&region=' + browse.region;
   if (cursor) p += '&cursor=' + encodeURIComponent(cursor);
   return p;
 }
@@ -367,8 +392,8 @@ function tile(c) {
   wantThumb(c.code, pic);
   n.appendChild(pic);
   n.appendChild(el('div', 'tile-name', c.name));
+  n.appendChild(el('div', 'tile-facts', tileFacts(c)));
   const meta = el('div', 'tile-meta');
-  meta.appendChild(el('span', null, roleName(c.role)));
   meta.appendChild(el('span', 'grow'));
   meta.appendChild(icon('heart'));
   meta.appendChild(el('span', null, c.hearts || 0));
