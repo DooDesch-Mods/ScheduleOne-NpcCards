@@ -6,6 +6,8 @@
 
 [![Discord](https://mods.doodesch.de/img/badge.svg)](https://mods.doodesch.de) [![Polyfill](https://polyfill.doomods.com/badge/npc-cards.svg)](https://polyfill.doomods.com/mod/npc-cards)
 
+[![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_XE0n6sMAksDTb5M4xpEYWV1R/badge.svg)](https://mlvscan.com/attestations/att_XE0n6sMAksDTb5M4xpEYWV1R)
+
 > Add new NPCs in one click. Browse the NPCs other players built on [NPC Vault](https://personify.doomods.com) and
 > install them from your phone. Every card is a full NPC with
 > look, schedule and role. Import downloaded card PNGs, send cards from the website to your game. Needs
@@ -17,8 +19,6 @@
 ![Sideload](https://img.shields.io/badge/Sideload-1.36.0+-yellow)
 ![Personnel](https://img.shields.io/badge/Personnel-2.5.0+-yellow)
 ![SideHustle](https://img.shields.io/badge/Side%20Hustle-optional-lightgrey)
-
-[![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_10wu4QLj1xtUVUxjGv9N7uDY/badge.svg)](https://mlvscan.com/attestations/att_10wu4QLj1xtUVUxjGv9N7uDY)
 
 ![NPC Cards](https://raw.githubusercontent.com/DooDesch-Mods/ScheduleOne-NpcCards/main/docs/img/header.jpg)
 
