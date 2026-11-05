@@ -3,6 +3,13 @@
 All notable changes to NPC Cards are documented here. This project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] - 2026-11-05
+
+### Added
+
+- Browse tiles show the NPC's region and its weekly spending, dealer cut or supplier order limit.
+- Region chips under the role chips filter Browse by Northtown, Westville, Downtown, Docks, Suburbia or Uptown.
+
 ## [1.2.0] - 2026-11-02
 
 ### Added
