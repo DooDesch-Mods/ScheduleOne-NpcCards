@@ -2,7 +2,7 @@
 
 > 🛟 **Need help or found a bug?** Get support at [support.doodesch.de/npccards](https://support.doodesch.de/npccards).
 
-[![Discord](https://mods.doodesch.de/img/badge.svg)](https://mods.doodesch.de)
+[![Discord](https://mods.doodesch.de/img/badge.svg)](https://mods.doodesch.de) [![Polyfill](https://polyfill.doomods.com/badge/npc-cards.svg)](https://polyfill.doomods.com/mod/npc-cards)
 
 > Add new NPCs in one click. Browse the NPCs other players built on [NPC Vault](https://personify.doomods.com) and
 > install them from your phone. Every card is a full NPC with
@@ -24,7 +24,7 @@
 
 | Tab | |
 |---|---|
-| **Browse** | Search NPC Vault, filter by Customer, Dealer, Supplier, Police or Civilian, sort by new, hearts or downloads. Open a card for its region, greeting and credit, then install it. |
+| **Browse** | Search NPC Vault, filter by role and region, sort by new, hearts or downloads. Each tile shows role, region and spending, cut or order limit. Open a card for its greeting and credit, then install it. |
 | **Installed** | Every card Personnel has installed, also the ones from Personify or the import folder. Remove a card here. |
 | **Import** | Card PNGs in `UserData/Personnel/Import/`. Install one now, or let Personnel install them at the next start. |
 | **Account** | Connect the game to your NPC Vault account. Cards you send with "Send to game" on the website arrive here. Upload a card PNG from the import folder. |
