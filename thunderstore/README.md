@@ -2,6 +2,11 @@
 
 > 🛟 **Need help or found a bug?** Get support at [support.doodesch.de/npccards](https://support.doodesch.de/npccards).
 
+> ⚠️ **A required mod is missing on Thunderstore?** Thunderstore sometimes takes one of my library mods off its listing, and then r2modman and Gale can't install it. Get it from Nexus Mods or GitHub instead and put the DLL into the `Mods` folder of your profile. Stuck? Ask in the [Discord](https://mods.doodesch.de).
+>
+> - **Sideload:** [Nexus Mods](https://www.nexusmods.com/schedule1/mods/2360) · [GitHub](https://github.com/DooDesch-Mods/ScheduleOne-Sideload/releases/latest)
+> - **Personnel:** [Nexus Mods](https://www.nexusmods.com/schedule1/mods/2275) · [GitHub](https://github.com/DooDesch-Mods/ScheduleOne-Personnel/releases/latest)
+
 [![Discord](https://mods.doodesch.de/img/badge.svg)](https://mods.doodesch.de) [![Polyfill](https://polyfill.doomods.com/badge/npc-cards.svg)](https://polyfill.doomods.com/mod/npc-cards)
 
 [![MLVScan NpcCards.dll](https://mlvscan.com/attestations/att_XE0n6sMAksDTb5M4xpEYWV1R/badge.svg)](https://mlvscan.com/attestations/att_XE0n6sMAksDTb5M4xpEYWV1R)
